@@ -7,4 +7,9 @@ cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
+<<<<<<< HEAD
 *.avi
+=======
+.avi
+
+>>>>>>> 15c593f226e1aa5f390275184a5a8a602fc688a1
