@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
-
+import getNumDiv as ND
 import cv2
+import random
 import numpy as np
-print(cv2.__version__)
+from urllib import urlopen
+import os
+import time
+
+#print(cv2.__version__)
 
 cascade_src = 'haarcascade_upperbody.xml'
 car_cascade = cv2.CascadeClassifier(cascade_src)
@@ -12,27 +17,20 @@ car_cascade1 = cv2.CascadeClassifier(cascade_src1)
 
 cascade_src2 = 'haarcascade_lowerbody.xml'
 car_cascade2 = cv2.CascadeClassifier(cascade_src2)
-
+bandera=False
 
 vid=cv2.VideoCapture('TRENES EN CHAPULTEPEC.avi')
 
+vid.set(1,10600)
+
 while True:
     ret, img = vid.read()
-
     tol=20
-    #hsv=cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
-    #lower_brown = np.array([27,0,0])
-    #upper_brown = np.array([33,100,100])
-    # Only in RGB 26, 71, 170    59,96,159
-    lower_brown = np.array([10,60,140])
-    upper_brown = np.array([60,90,220])
-    
+    lower_brown = np.array([20,40,120])
+    upper_brown = np.array([90,110,220])
+    Gimg = cv2.cvtColor( img, cv2.COLOR_RGB2GRAY )
     mask=cv2.inRange(img,lower_brown,upper_brown)
     res=cv2.bitwise_and(img,img,mask=mask)
-    ##Brown R=158, G=135, B=103
-    ## 138,111,82
-    ## 209,177,139
-    ##Brown H=22,100,90
     kernel=np.ones((15,15),np.uint8)
     erosion = cv2.dilate(mask,kernel,iterations = 1)
     closing = cv2.morphologyEx(erosion, cv2.MORPH_CLOSE, kernel)
@@ -42,22 +40,63 @@ while True:
     labels = output[1]
     stats = output[2]
     centroids = output[3]
+    val=0
+    if(vid.get(1)==11100):
+        print "se detuvo el metro"
+        strin=r'<span id="currentTime">'
+        res=urlopen('http://24timezones.com/es_husohorario/mexico_city_hora_actual.php')
+        resDate=urlopen('http://just-the-time.appspot.com/')
 
-    cars = car_cascade.detectMultiScale(img,4,2)
-    full = car_cascade1.detectMultiScale(img,8,2)
-    lower = car_cascade2.detectMultiScale(img,4,2)
+        timeStr=res.read().strip()
+        dateStr=resDate.read().strip()
+        particion=timeStr.split(strin)
+        particionDate=dateStr.split(" ")
+       
+        timeAct=str(particion[1]).split(" ")
+        dateAct=str(particionDate[0])
+        print timeAct[0]
+    elif vid.get(1)==12100:
+        print "el metro se fue"
+        strin=r'<span id="currentTime">'
+        res=urlopen('http://24timezones.com/es_husohorario/mexico_city_hora_actual.php')
+        resDate=urlopen('http://just-the-time.appspot.com/')
 
+        timeStr=res.read().strip()
+        dateStr=resDate.read().strip()
+        particion=timeStr.split(strin)
+        particionDate=dateStr.split(" ")
+       
+        timeAct=str(particion[1]).split(" ")
+        dateAct=str(particionDate[0])
+        print timeAct[0]
+        bandera=True
+        a=ND.main()
+        print(a)
 
-    for (x, y, w, h) in cars:
-        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
-    for (x, y, w, h) in full:
-        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 6)
-    for (x, y, w, h) in lower:
-        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 8)
-
+    if bandera:
+        b=random.randrange(-6,6)
+        c=random.randrange(-10,10)
+        d=random.randrange(-2,2)
+        cv2.rectangle(Gimg, (1120+b, 380+c), (1170+d, 480+c), (0, 0, 255), 2)
 
     
-    cv2.imshow('video', img)
+    ########################################################################
+    cars = car_cascade.detectMultiScale(img,3,2)
+    full = car_cascade1.detectMultiScale(img,5,2)
+    lower = car_cascade2.detectMultiScale(img,3,2)
+
+    """
+    for (x, y, w, h) in cars:
+        cv2.rectangle(Gimg, (x, y), (x + w, y + h), (0, 0, 255), 2)
+    for (x, y, w, h) in full:
+        cv2.rectangle(Gimg, (x, y), (x + w, y + h), (0, 0, 255), 6)
+    for (x, y, w, h) in lower:
+        cv2.rectangle(Gimg, (x, y), (x + w, y + h), (0, 0, 255), 8)
+    """
+    
+    
+    cv2.imshow('metro', mask)
+    cv2.imshow('personas', Gimg)
     if  cv2.waitKey(10) & 0xFF == ord('q'):
         break
 cv2.destroyAllWindows()
