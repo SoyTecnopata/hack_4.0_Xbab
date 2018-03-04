@@ -1,0 +1,92 @@
+<!doctype html>
+<title>CDMoveX    Hackaton    Ciudad 4.0</title>
+<style>
+  * {
+    box-sizing: border-box; 
+  }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+  }
+
+    #main {
+    display: flex;
+    flex: 1;
+  }
+  #main > article {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    flex: 1;
+    order: 2;
+  }
+  #main > nav, 
+  #main > aside {
+    flex: 0 0 20vw;
+  }
+  #main > nav {
+    background: #E74C3C  ;
+    order: 3;
+  }
+  #main > aside {
+    background: #E74C3C  ;
+    order: 1;
+  }
+  header, footer {
+    background: #F2F4F4 ;
+    height: 20vh;
+  }
+  header, footer, article, nav, aside {
+    padding: 1em;
+  }
+
+.Tbutton {
+    background-color: #E74C3C;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+</style>
+<body>
+
+
+  <header> <center> <img src= "https://raw.githubusercontent.com/SoyTecnopata/hack_4.0_Xbab/master/cdmovex.png" > </center> </header>
+
+
+  <div id="main">
+    <article>
+      <center> 
+      <button onclick="location.href = '/estaciones'" class="Tbutton">Estado de estaciones cercanas</button>
+      <button onclick="location.href = '/linea3'" class="Tbutton">Estado de la Linea 3</button>
+      <button onclick="location.href = '/info'"  class="Tbutton">Información</button>
+      </center> 
+
+   <h1><strong>heatmap</strong></h1>
+
+  </article>
+    <nav>
+      <a class="twitter-timeline" href="https://twitter.com/MetrobusCDMX?ref_src=twsrc%5Etfw">Tweets by MetrobusCDMX</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    </nav>
+
+    <aside>
+     <a class="twitter-timeline" href="https://twitter.com/MetroCDMX?ref_src=twsrc%5Etfw">Tweets by MetroCDMX</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+</aside>
+  </div>
+  <footer>Footer</footer>
+</body>

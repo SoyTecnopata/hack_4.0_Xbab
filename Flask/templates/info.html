@@ -1,0 +1,100 @@
+<!doctype html>
+<title>CDMoveX    Hackaton    Ciudad 4.0</title>
+<style>
+  * {
+    box-sizing: border-box; 
+  }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+  }
+  #main {
+    display: flex;
+    flex: 1;
+  }
+  #main > article {
+    flex: 1;
+    order: 2;
+  }
+  #main > nav, 
+  #main > aside {
+    flex: 0 0 20vw;
+  }
+  #main > nav {
+    background: #E74C3C  ;
+    order: 3;
+  }
+  #main > aside {
+    background: #E74C3C  ;
+    order: 1;
+  }
+  header, footer {
+    background: #F2F4F4 ;
+    height: 20vh;
+  }
+  header, footer, article, nav, aside {
+    padding: 1em;
+  }
+
+.Tbutton {
+    background-color: #E74C3C;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+</style>
+<body>
+
+
+  <header> <center> <img src= "https://raw.githubusercontent.com/SoyTecnopata/hack_4.0_Xbab/master/cdmovex.png" > </center> </header>
+
+
+  <div id="main">
+    <article>
+      <center> 
+      <button onclick="location.href = '/estaciones'" class="Tbutton">Estado de estaciones cercanas</button>
+      <button onclick="location.href = '/linea3'" class="Tbutton">Estado de la Linea 3</button>
+      <button onclick="location.href = '/info'"  class="Tbutton">Información</button>
+      </center> 
+
+   <h1><strong>Objetivo inicial de la propuesta:</strong></h1>
+<h3 style="padding-left: 30px; text-align: left;"><span style="font-weight: 400;">Mejorar la movilidad urbana en la ZMCDMX &nbsp;a trav&eacute;s del desarrollo&nbsp;</span><span style="font-weight: 400;">de una plataforma/servicio<br />capaz de brindar al usuario informaci&oacute;n en&nbsp;tiempo real del transporte colectivo que le permita<br /></span><span style="font-weight: 400;"> planificar sus&nbsp;traslados seleccionando la mejor &nbsp;alternativa de transporte con el fin&nbsp;de prevenir<br />el sobrecupo fomentado la &nbsp;disminuci&oacute;n de tiempos y recabar informaci&oacute;n para una mejor toma<br />de decisiones;&nbsp;esto mediante el uso de tecnolog&iacute;as de &uacute;ltima generaci&oacute;n.</span></h3>
+
+<p>&nbsp;</p>
+<h1><strong>Resumen:</strong></h1>
+<h3 style="padding-left: 30px;"><span style="font-weight: 400;">Implementaci&oacute;n de una plataforma y servicio de monitoreo de transporte colectivo que mediante la obtenci&oacute;n de datos en tiempo real a trav&eacute;s de:</span></h3>
+<ul>
+<li style="font-weight: 400;">
+<h3><span style="font-weight: 400;"> un Sistema de microcomputadoras dotadas de c&aacute;maras USB/WIFI que detectan el n&uacute;mero de personas &nbsp;(Machine learning) dentro de &nbsp;los andenes en una determinada estaci&oacute;n del metro y los tiempos estimados de llegada o demora de los trenes en cada estaci&oacute;n; </span></h3>
+</li>
+<li style="font-weight: 400;">
+<h3><span style="font-weight: 400;">el servicio </span><em><span style="font-weight: 400;">Wifi </span></em><span style="font-weight: 400;">&nbsp;que posee el STC llevar a cabo la cuantificaci&oacute;n de los usuarios que se encuentran conectados a dicha red y con ello reportar una cantidad aproximada de los que se encuentran dentro de los vagones</span></h3>
+</li>
+</ul>
+<h3 style="padding-left: 30px;"><span style="font-weight: 400;">proporcione &nbsp;al usuario el aforo actual de la estaci&oacute;n para prevenir sobrecupo, dando la oportunidad de selecci&oacute;n de ruta y planificaci&oacute;n del viaje.</span></h3>
+<p>&nbsp;</p>
+
+  </article>
+    <nav>
+      <a class="twitter-timeline" href="https://twitter.com/MetrobusCDMX?ref_src=twsrc%5Etfw">Tweets by MetrobusCDMX</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    </nav>
+
+    <aside>
+     <a class="twitter-timeline" href="https://twitter.com/MetroCDMX?ref_src=twsrc%5Etfw">Tweets by MetroCDMX</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+</aside>
+  </div>
+  <footer>Footer</footer>
+</body>

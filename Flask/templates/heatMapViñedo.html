@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #floating-panel {
+        background-color: #fff;
+        border: 1px solid #999;
+        left: 25%;
+        padding: 5px;
+        position: absolute;
+        top: 10px;
+        z-index: 5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="floating-panel">
+      <button onclick="HideMarkers()">Hide Markers</button>
+      <button onclick="changeRadius()">Change Radius</button>
+      <button onclick="showTemp()">Temperature</button>
+      <button onclick="showHum()">Humidity</button>
+      <p>{{ variable }}</p>
+    </div>
+    <div id="map"></div>
+    <script>
+
+      // This example requires the Visualization library. Include the libraries=visualization
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+
+      var map, heatmap;
+      var ban=true;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: {lat: 32.095445, lng: -116.590435},
+          mapTypeId: 'satellite'
+        });
+
+        agro101 = new google.maps.visualization.HeatmapLayer({
+          data: [new google.maps.LatLng(32.0949, -116.58963)],
+          map: map
+        });
+        agro102 = new google.maps.visualization.HeatmapLayer({
+          data: [new google.maps.LatLng(32.09294, -116.59041)],
+          map: map
+        });
+        agro103 = new google.maps.visualization.HeatmapLayer({
+          data: [new google.maps.LatLng(32.09668, -116.59153)],
+          map: map
+        });
+        agro105 = new google.maps.visualization.HeatmapLayer({
+          data: [new google.maps.LatLng(32.09465, -116.58688)],
+          map: map
+        });
+        agro106 = new google.maps.visualization.HeatmapLayer({
+          data: [new google.maps.LatLng(32.09448, -116.58931)],
+          map: map
+        });
+        agro107 = new google.maps.visualization.HeatmapLayer({
+          data: [new google.maps.LatLng(32.09692, -116.59024)],
+          map: map
+        });
+        agro108 = new google.maps.visualization.HeatmapLayer({
+          data: [new google.maps.LatLng(32.09103, -116.58897)],
+          map: map
+        });
+        agro109 = new google.maps.visualization.HeatmapLayer({
+          data: [new google.maps.LatLng(32.09696, -116.59143)],
+          map: map
+        });
+        agro110 = new google.maps.visualization.HeatmapLayer({
+          data: [new google.maps.LatLng(32.09709, -116.58946)],
+          map: map
+        });
+
+        agro101.set('radius', 300);
+        agro101.set('gradient', ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+         agro102.set('radius', 300);
+        agro102.set('gradient', ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+         agro103.set('radius', 300);
+        agro103.set('gradient', ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+         agro105.set('radius', 300);
+        agro105.set('gradient', ['rgba(230, 0, 0, 0)','rgba(150, 150, 0, 1)']);
+         agro106.set('radius', 300);
+        agro106.set('gradient', ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+         agro107.set('radius', 300);
+        agro107.set('gradient', ['rgba(230, 0, 0, 0)','rgba(230, 150, 0, 1)']);
+         agro108.set('radius', 300);
+        agro108.set('gradient', ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+         agro109.set('radius', 300);
+        agro109.set('gradient', ['rgba(230, 0, 0, 0)','rgba(240, 50, 0, 1)']);
+         agro110.set('radius', 300);
+        agro110.set('gradient', ['rgba(230, 0, 0, 0)','rgba(150, 150, 0, 1)']);
+      }
+
+      function changeOpacity() {
+        agro101.set('opacity', agro101.get('opacity') ? null : 0.2);
+      }
+      function changeRadius() {
+        agro101.set('radius', agro101.get('radius') ? null : 300);
+        agro102.set('radius', agro102.get('radius') ? null : 300);
+        agro103.set('radius', agro103.get('radius') ? null : 300);
+        agro105.set('radius', agro105.get('radius') ? null : 300);
+        agro106.set('radius', agro106.get('radius') ? null : 300);
+        agro107.set('radius', agro107.get('radius') ? null : 300);
+        agro108.set('radius', agro108.get('radius') ? null : 300);
+        agro109.set('radius', agro109.get('radius') ? null : 300);
+        agro110.set('radius', agro110.get('radius') ? null : 300);
+        
+      }
+      function HideMarkers() {
+        agro101.setMap(agro101.getMap() ? null : map);
+        agro102.setMap(agro102.getMap() ? null : map);
+        agro103.setMap(agro103.getMap() ? null : map);
+        agro105.setMap(agro105.getMap() ? null : map);
+        agro106.setMap(agro106.getMap() ? null : map);
+        agro107.setMap(agro107.getMap() ? null : map);
+        agro108.setMap(agro108.getMap() ? null : map);
+        agro109.setMap(agro109.getMap() ? null : map);
+        agro110.setMap(agro110.getMap() ? null : map);
+      }
+      // Heatmap data: 500 Points
+      function showHum() {
+        ban= !ban
+        agro101.set('radius', agro101.get('radius')==null ? null : 300);
+        agro102.set('radius', agro102.get('radius')==null ? null : 300);
+        agro103.set('radius', agro103.get('radius')==null ? null : 300);
+        agro105.set('radius', agro105.get('radius')==null ? null : 300);
+        agro106.set('radius', agro106.get('radius')==null ? null : 300);
+        agro107.set('radius', agro107.get('radius')==null ? null : 300);
+        agro108.set('radius', agro108.get('radius')==null ? null : 300);
+        agro109.set('radius', agro109.get('radius')==null ? null : 300);
+        agro110.set('radius', agro110.get('radius')==null ? null : 300);
+        agro101.set('gradient', agro101.get('gradient') ? ['rgba(0, 0, 230, 0)','rgba(0, 0, 230, 1)'] : ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)'] );
+        agro102.set('gradient', agro102.get('gradient') ? ['rgba(0, 0, 230, 0)','rgba(0, 0, 235, 1)'] : ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+        agro103.set('gradient', agro103.get('gradient') ? ['rgba(0, 0, 230, 0)','rgba(0, 0, 230, 1)'] :['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+        agro105.set('gradient', agro105.get('gradient') ? ['rgba(0, 0, 230, 0)','rgba(20, 100, 210, 1)'] : ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+        agro106.set('gradient', agro106.get('gradient') ? ['rgba(0, 0, 230, 0)','rgba(0, 0, 230, 1)'] : ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+        agro107.set('gradient', agro107.get('gradient') ? ['rgba(0, 0, 230, 0)','rgba(5, 5, 200, 1)'] : ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+        agro108.set('gradient', agro108.get('gradient') ? ['rgba(0, 0, 230, 0)','rgba(0, 0, 230, 1)'] : ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+        agro109.set('gradient', agro109.get('gradient') ? ['rgba(0, 0, 230, 0)','rgba(0, 0, 230, 1)'] : ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+        agro110.set('gradient', agro110.get('gradient') ? ['rgba(0, 0, 230, 0)','rgba(20, 160, 210, 1)'] : ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)']);
+      }
+
+      function showTemp() {
+        ban= !ban
+        agro101.set('radius', agro101.get('radius')==null ? null : 300);
+        agro102.set('radius', agro102.get('radius')==null ? null : 300);
+        agro103.set('radius', agro103.get('radius')==null ? null : 300);
+        agro105.set('radius', agro105.get('radius')==null ? null : 300);
+        agro106.set('radius', agro106.get('radius')==null ? null : 300);
+        agro107.set('radius', agro107.get('radius')==null ? null : 300);
+        agro108.set('radius', agro108.get('radius')==null ? null : 300);
+        agro109.set('radius', agro109.get('radius')==null ? null : 300);
+        agro110.set('radius', agro110.get('radius')==null ? null : 300);
+        agro101.set('gradient', agro101.get('gradient') ?  ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)'] : null );
+        agro102.set('gradient', agro102.get('gradient') ?  ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)'] : null);
+        agro103.set('gradient', agro103.get('gradient') ? ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)'] : null);
+        agro105.set('gradient', agro105.get('gradient') ?  ['rgba(230, 0, 0, 0)','rgba(150, 150, 0, 1)'] : null);
+        agro106.set('gradient', agro106.get('gradient') ? ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)'] : null);
+        agro107.set('gradient', agro107.get('gradient') ? ['rgba(230, 0, 0, 0)','rgba(230, 150, 0, 1)'] : null);
+        agro108.set('gradient', agro108.get('gradient') ?  ['rgba(230, 0, 0, 0)','rgba(250, 0, 0, 1)'] : null);
+        agro109.set('gradient', agro109.get('gradient') ?  ['rgba(230, 0, 0, 0)','rgba(240, 50, 0, 1)'] : null);
+        agro110.set('gradient', agro110.get('gradient') ?  ['rgba(230, 0, 0, 0)','rgba(150, 150, 0, 1)'] : null);
+      }
+      
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjf-TaScCvlX0S8F3DtvgXha4zhILs8yo&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html>

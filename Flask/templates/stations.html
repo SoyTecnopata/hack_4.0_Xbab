@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CDMoveX    Hackaton    Ciudad 4.0</title>
+    <style>
+     html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#wrapper {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+#header {
+  background: #F2F4F4;
+  height: 34vh;
+}
+#body {
+  flex: 1;
+  position: relative;
+}
+#footer {
+
+  background: #E74C3C;
+
+}
+#map-canvas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+
+.Tbutton {
+    background-color: #E74C3C;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+    </style>
+
+
+  </head>
+
+
+  <body>
+
+
+    <div id="map"></div>  
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjf-TaScCvlX0S8F3DtvgXha4zhILs8yo&libraries=visualization&callback=initMap">
+    </script>
+<div id="wrapper">
+  <div id="header">
+
+<p></p>
+
+
+    <center> <img src= "https://raw.githubusercontent.com/SoyTecnopata/hack_4.0_Xbab/master/cdmovex.png" > </center>
+
+<p></p>
+
+    <center> 
+      <button onclick="location.href = '/estaciones'" class="Tbutton">Estado de estaciones cercanas</button>
+      <button onclick="location.href = '/linea3'" class="Tbutton">Estado de la Linea 3</button>
+      <button onclick="location.href = '/info'"  class="Tbutton">Información</button>
+
+
+
+
+      
+
+
+
+
+
+      </center> 
+
+
+
+  </div>
+  <div id="body">
+    <div id="map-canvas"></div>
+  </div>
+  <div id="footer">  <center> Made with 
+
+
+<p id="demo"></p> 
+
+
+LOVE
+
+
+  </center>
+  </div>
+</div>
+
+
+<script language="javascript">
+
+var map;
+
+function initialize() {
+
+  document.getElementById('map-canvas').style.height = document.getElementById('body').clientHeight + 'px';
+  var myStyles =[
+    {
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [
+              { visibility: "off" }
+        ]
+    },
+    {
+        featureType: "transit",
+        elementType: "labels",
+        stylers: [
+              { visibility: "off" }
+        ]
+    }
+];
+
+  var mapOptions = {
+    zoom: 16,
+    center: new google.maps.LatLng(19.2970222,-99.1870575),
+    styles: myStyles 
+    
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+    map: map,
+    draggable: false,
+    animation: google.maps.Animation.DROP,
+    position: {lat: 19.297017, lng: -99.191363},
+    title:"Estas aqui!"
+  });
+
+
+  var iconBase = 'https://raw.githubusercontent.com/SoyTecnopata/hack_4.0_Xbab/master/';
+
+
+
+
+var infotableC = '<p><span style="color: #000000;"><strong><span style="color: #ff0000;">&nbsp;■</span> MB Corregidora&nbsp;</strong></span></p><table style="width: 360px;"> <tbody> <tr style="height: 15px;"> <td style="width: 110.617px; height: 15px;">&nbsp;</td> <td style="width: 112.383px; height: 15px; text-align: center;">Indios verdes</td> <td style="width: 117px; height: 15px; text-align: center;">La joya</td> </tr> <tr style="height: 30.0508px;"> <td style="width: 110.617px; height: 30.0508px; text-align: center;">Personas en anden:</td> <td style="width: 112.383px; height: 30.0508px; text-align: center;">40</td> <td style="width: 117px; height: 30.0508px; text-align: center;">20</td> </tr> <tr style="height: 33px;"> <td style="width: 110.617px; height: 33px; text-align: center;">&nbsp;Llegada &uacute;ltimo MB</td> <td style="width: 112.383px; height: 33px; text-align: center;">12:35:36</td> <td style="width: 117px; height: 33px; text-align: center;">12:32:18</td> </tr> <tr style="height: 33px;"> <td style="width: 110.617px; height: 33px; text-align: center;">&nbsp;Salida &uacute;ltimo MB&nbsp;</td> <td style="width: 112.383px; height: 33px; text-align: center;">&nbsp;12:34:51</td> <td style="width: 117px; height: 33px; text-align: center;">12:33:23</td> </tr> <tr style="height: 15px;"> <td style="width: 110.617px; height: 15px; text-align: center;">&nbsp;Siguiente MB</td> <td style="width: 112.383px; height: 15px; text-align: center;">12:41:63</td> <td style="width: 117px; height: 15px; text-align: center;">12:39:56</td> </tr> <tr style="height: 15px;"> <td style="width: 110.617px; height: 15px; text-align: center;">&nbsp;% de ocupaci&oacute;n de siguiente MB</td> <td style="width: 112.383px; height: 15px; text-align: center;">46</td> <td style="width: 117px; height: 15px; text-align: center;">23</td> </tr> </tbody> </table>';
+
+  
+var msj = ['<p><span style="color: #000000;"><strong><span style="color: #',';">&nbsp;■</span> MB Villa Olimpica&nbsp;</strong></span></p><table style="width: 360px;"> <tbody> <tr style="height: 15px;"> <td style="width: 110.617px; height: 15px;">&nbsp;</td> <td style="width: 112.383px; height: 15px; text-align: center;">Indios verdes</td> <td style="width: 117px; height: 15px; text-align: center;">La joya</td> </tr> <tr style="height: 30.0508px;"> <td style="width: 110.617px; height: 30.0508px; text-align: center;">Personas en anden:</td> <td style="width: 112.383px; height: 30.0508px; text-align: center;">','</td> <td style="width: 117px; height: 30.0508px; text-align: center;">','</td> </tr> <tr style="height: 33px;"> <td style="width: 110.617px; height: 33px; text-align: center;">&nbsp;Llegada &uacute;ltimo MB</td> <td style="width: 112.383px; height: 33px; text-align: center;">','</td> <td style="width: 117px; height: 33px; text-align: center;">','</td> </tr> <tr style="height: 33px;"> <td style="width: 110.617px; height: 33px; text-align: center;">&nbsp;Salida &uacute;ltimo MB&nbsp;</td> <td style="width: 112.383px; height: 33px; text-align: center;">&nbsp;','</td> <td style="width: 117px; height: 33px; text-align: center;">','</td> </tr> <tr style="height: 15px;"> <td style="width: 110.617px; height: 15px; text-align: center;">&nbsp;Siguiente MB</td> <td style="width: 112.383px; height: 15px; text-align: center;">','</td> <td style="width: 117px; height: 15px; text-align: center;">','</td> </tr> <tr style="height: 15px;"> <td style="width: 110.617px; height: 15px; text-align: center;">&nbsp;% de ocupaci&oacute;n de siguiente MB</td> <td style="width: 112.383px; height: 15px; text-align: center;">','</td> <td style="width: 117px; height: 15px; text-align: center;">','</td> </tr> </tbody> </table>'];
+
+
+
+var rawvar =  {{ variable }};
+
+
+var storevariables = ['', '','','','','','','','','',''];
+
+
+  for (i = 1; i < 4; i++) { 
+
+    if(i>1)
+    {
+
+    var d = new Date(1); // The 0 there is the key, which sets the date to the epoch
+    d.setUTCSeconds(rawvar[i]);
+    var stime=d.toString();
+    var separated=stime.split(" ");
+    var time=separated[4];
+
+    storevariables[i]= time;
+    }
+    else()
+    {
+      
+    storevariables[i]=String(rawvar[i]);
+    //infotableVO+=msj[i];
+    //infotableVO+=storevariables[i];
+    
+}
+};
+
+
+var infotableVO=msj[1];
+
+var msjz=['asdasd','asdasd','qwertyuio','qwerghjk','lkjhgfdse','asd56'];
+document.getElementById("demo").innerHTML =infotableVO;
+
+  var infoMBCorregidora = new google.maps.InfoWindow({
+    content: infotableC
+  });
+
+var infoMBVillaO = new google.maps.InfoWindow({
+    content: infotableC
+  });
+
+
+  var mbCorregidora = new google.maps.Marker({
+    position: {lat: 19.2939082, lng: -99.1813096},
+    map: map,
+    icon: iconBase + 'MBlogo.png'
+  });
+
+  var mbVillaO = new google.maps.Marker({
+    position: {lat: 19.2988879, lng: -99.1856675},
+    map: map,
+    icon: iconBase + 'MBlogo.png'
+  });
+
+mbCorregidora.addListener('click', function() {
+    infoMBCorregidora.open(map, mbCorregidora);
+  });
+
+mbVillaO.addListener('click', function() {
+    infoMBVillaO.open(map, mbVillaO);
+  });
+
+
+
+}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+</script>
+
+  </body>
+</html>
